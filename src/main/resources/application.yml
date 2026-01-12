@@ -2,3 +2,6 @@ spring:
   application:
     name: birth-backend
     version: 1.0.0
+logging:
+  level:
+    com.bitnoises: ${LOG_LEVEL:warn}
