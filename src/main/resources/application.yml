@@ -2,6 +2,7 @@ spring:
   application:
     name: birth-backend
     version: 1.0.0
-logging:
-  level:
-    com.bitnoises: ${LOG_LEVEL:warn}
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
