@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: birth-backend
+    version: 1.0.0
