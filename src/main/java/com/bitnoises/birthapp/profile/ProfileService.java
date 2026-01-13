@@ -4,7 +4,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +23,7 @@ public class ProfileService {
         return profileRepository.findAll();
     }
 
-    public Profile read(@PathVariable Long id) {
+    public Profile read(Long id) {
         Optional<Profile> profile = profileRepository.findById(id);
         return profile.orElseThrow(() -> new EntityNotFoundException(String.format("Profile with id %d not found.", id)));
     }
