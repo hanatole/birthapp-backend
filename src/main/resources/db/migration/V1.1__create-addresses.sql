@@ -1,0 +1,7 @@
+CREATE TABLE addresses
+(
+    id     INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    zip    VARCHAR(10),
+    street VARCHAR(255),
+    city   VARCHAR(50)
+);
