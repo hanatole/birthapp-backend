@@ -1,5 +1,7 @@
 package com.bitnoises.birthapp.profile;
 
+import com.bitnoises.birthapp.common.entity.Address;
+import com.bitnoises.birthapp.common.services.AddressService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +15,14 @@ import java.util.Optional;
 @Service
 public class ProfileService {
     private final IProfileRepository profileRepository;
+    private final AddressService addressService;
 
     public void create(Profile profile) {
         log.info("Creating new profile for {}.", profile.getEmail());
+        if (profile.getAddress() != null) {
+            Address address = addressService.create(profile.getAddress());
+            profile.setAddress(address);
+        }
         profileRepository.save(profile);
     }
 
