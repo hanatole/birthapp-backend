@@ -1,5 +1,6 @@
 package com.bitnoises.birthapp.profile;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class ProfileService {
 
     public Profile read(@PathVariable Long id) {
         Optional<Profile> profile = profileRepository.findById(id);
-        return profile.orElse(null);
+        return profile.orElseThrow(() -> new EntityNotFoundException(String.format("Profile with id %d not found.", id)));
     }
 
     public Profile update(Long id, Profile profile) {
@@ -36,8 +37,9 @@ public class ProfileService {
             profileToUpdate.setLastname(profile.getLastname());
             profileToUpdate.setPassword(profile.getPassword());
             profileRepository.save(profileToUpdate);
+            return profileToUpdate;
         }
-        return profileToUpdate;
+        throw new EntityNotFoundException(String.format("Profile with id %d not found.", id));
     }
 
     public void delete(Long id) {
