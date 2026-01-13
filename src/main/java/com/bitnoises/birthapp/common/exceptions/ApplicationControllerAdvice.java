@@ -30,4 +30,12 @@ public class ApplicationControllerAdvice {
         log.error(exception.getMessage(), exception);
         return new ErrorResponseEntity(null, exception.getMessage());
     }
+
+    @ResponseStatus(BAD_REQUEST)
+    @ExceptionHandler(RuntimeException.class)
+    public @ResponseBody ErrorResponseEntity handleValidationException(
+            RuntimeException exception) {
+        log.error(exception.getMessage(), exception);
+        return new ErrorResponseEntity(null, exception.getMessage());
+    }
 }
