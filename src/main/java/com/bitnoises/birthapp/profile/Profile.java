@@ -3,12 +3,9 @@ package com.bitnoises.birthapp.profile;
 import com.bitnoises.birthapp.common.entity.Address;
 import com.bitnoises.birthapp.common.enums.Civility;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-
+@Builder
 @Setter
 @Getter
 @AllArgsConstructor
