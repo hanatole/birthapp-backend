@@ -12,13 +12,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "profiles")
+@Table(name = "profiles", uniqueConstraints = {
+        @UniqueConstraint(name = "uk_profiles_email", columnNames = "email")
+})
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstname;
     private String lastname;
+    @Column(nullable = false)
     private String email;
     private String password;
 }
