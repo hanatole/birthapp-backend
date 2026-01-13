@@ -1,5 +1,6 @@
 package com.bitnoises.birthapp.profile;
 
+import com.bitnoises.birthapp.common.enums.Civility;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,8 @@ public class Profile {
     private Long id;
     private String firstname;
     private String lastname;
+    @Enumerated(EnumType.STRING)
+    private Civility civility;
     @Column(nullable = false)
     private String email;
     private String password;

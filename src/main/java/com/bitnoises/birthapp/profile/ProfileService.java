@@ -35,6 +35,7 @@ public class ProfileService {
             profileToUpdate.setFirstname(profile.getFirstname());
             profileToUpdate.setLastname(profile.getLastname());
             profileToUpdate.setPassword(profile.getPassword());
+            profileToUpdate.setCivility(profile.getCivility());
             profileRepository.save(profileToUpdate);
             return profileToUpdate;
         }
